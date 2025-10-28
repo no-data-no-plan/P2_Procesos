@@ -14,8 +14,14 @@ public class Cuiner {
         String plat3 = "Carn";
         String plat4 = "Peix";
         String plat5 = "Llegums";
+        int cont = 0;
+        do{
+            int numRandom = rd.nextInt(5)+1;
+            System.out.println(numRandom);
+            cont++;
+        } while (cont != 10);
 
-        int numRandom = rd.nextInt(5)+1;
-        
+
+
     }
 }
