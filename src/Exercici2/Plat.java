@@ -1,3 +1,5 @@
+package Exercici2;
+
 public class Plat {
     private String nom; 
     private int id;

@@ -1,3 +1,4 @@
+package Exercici2;
 public class Restaurant {
     private Passaplats passaplats;
     public Restaurant(Passaplats passaplats){
