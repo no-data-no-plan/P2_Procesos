@@ -40,6 +40,15 @@ public class Restaurant {
         cuiner2.start();
         cambrer1.start();
         cambrer2.start();
+
+        try{
+            cuiner1.join();
+            cuiner2.join();
+            cambrer1.interrupt();
+            cambrer2.interrupt();
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         
     }
 }
