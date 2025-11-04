@@ -8,12 +8,13 @@ public class Main2 {
         do{
             Passaplats pasa = new Passaplats(Restaurant.entrada());
             System.out.println("\nCreant passaplats...");
-            System.out.println("...\n");
+            System.out.println("...");
             Restaurant restaurant = new Restaurant(pasa);
             System.out.println("\nEntrant al restaurant...");
             System.out.println("...\n");
-            Restaurant.iniciRestaurant();
-            programa = true;
+            restaurant.iniciRestaurant();
+            programa = restaurant.tancarRestaurant();
+            System.out.println("\n----- RESTAURANT TANCAT -----\n");
         }while(!programa);
     }
 }

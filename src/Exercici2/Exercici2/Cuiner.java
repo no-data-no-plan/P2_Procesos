@@ -14,14 +14,13 @@ public class Cuiner extends Thread{
     @Override
     public void run() {
         // Este código se ejecutará cuando hagas cuiner.start()
-        
         try {
             //farem que cada cuiner faci 5 plats 
             for (int i = 0; i < 5; i++){
-                System.out.println(nom + " está cocinando...");
+                System.out.println("\n"+nom + " está cuinant...");
                 Thread.sleep(2000);
                 Plat plat = cuinar();
-                System.out.println(nom + " ha preparado: " + plat.getNom());
+                System.out.println("\n"+nom + " ha preparat: " + plat.getNom());
                 passaplats.posarPlat(plat);
             }
         } catch (InterruptedException e) {
@@ -31,7 +30,7 @@ public class Cuiner extends Thread{
     }
     public static Plat cuinar(){
         Random rd = new Random();
-        System.out.println("Marchando!!");
+        System.out.println("\nMarchando!!");
         System.out.println("...");
         System.out.println("...\n");
         Plat plat1 = new Plat("Pasta", 1);
@@ -45,7 +44,7 @@ public class Cuiner extends Thread{
         plats.add(plat3);
         plats.add(plat4);
         plats.add(plat5);
-        int numRandom = rd.nextInt(5)+1;
+        int numRandom = rd.nextInt(5);
         return plats.get(numRandom);
     }
 }
