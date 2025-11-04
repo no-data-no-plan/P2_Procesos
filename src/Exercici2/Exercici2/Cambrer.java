@@ -10,13 +10,15 @@ public class Cambrer extends Thread{
     @Override
     public void run(){
         try{
-            while(true){
+            int cont = 0;
+            while(!Thread.currentThread().isInterrupted() && cont < 5){
                 Plat plat = passaplats.treurePlat();
                 if(plat != null){
-                    System.out.println(nom + " ha recollit " + plat.getNom());
+                    System.out.println("\n"+nom + " ha recollit " + plat.getNom());
                     servir(plat);
+                    cont++;
                 }else{
-                    System.out.println(nom +" esperant plats de cuina...\n");
+                    System.out.println("\n"+nom +" esperant plats de cuina...\n");
                     Thread.sleep(1000);
                 }
             }
@@ -24,11 +26,11 @@ public class Cambrer extends Thread{
             System.out.println(nom + " ha acabat el seu torn...");
         }
     }
-    public void servir(Plat plat){
+    public void servir(Plat plat) throws InterruptedException{
         try{
-            System.out.println(nom + " servint " + plat.getNom()+ " al client...");
-            Thread.sleep(2000);
-            System.out.println("S'ha entregat "+ plat.getNom()+ "al client!\n" );
+            System.out.println("\n"+nom + " servint " + plat.getNom()+ " al client...");
+            Thread.sleep(1000);
+            System.out.println("\nS'ha entregat "+ plat.getNom()+ " al client!\n" );
         }catch(InterruptedException e){
             e.printStackTrace();
         }

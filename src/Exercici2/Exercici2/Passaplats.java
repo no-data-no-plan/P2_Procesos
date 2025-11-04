@@ -15,20 +15,20 @@ public class Passaplats {
     //synchronized s'utilitza per evitar problemes de concurrencia
     public synchronized void posarPlat(Plat plat) throws InterruptedException{
         while(llista.size() >= MAX_CAP){
-            System.out.println("Passaplats ple! Esperant...");
+            System.out.println("\nPassaplats ple! Esperant...");
             wait();
         }
         llista.add(plat);
-        System.out.println("\nPlat afegit al Passaplats!!!");
+        System.out.println("\nPlat: "+plat.getNom()+" afegit al Passaplats!!!");
         notifyAll();
     }
     public synchronized Plat treurePlat() throws InterruptedException {
         while (llista.isEmpty()){
-            System.out.println("El passaplats està buit! Cambrer esperant...\n");
+            System.out.println("\nEl passaplats està buit! Cambrer esperant...\n");
             wait(); //El cambrer espera
         }
         Plat plat = llista.remove(0);
-        System.out.println("Plat "+ plat.getNom()+ " recollit del passaplats per ");
+        System.out.println("\nPlat: "+ plat.getNom()+ " recollit del passaplats.");
         notifyAll();//Avisa als cuiners de que hi ha espai
         return plat;
     }
