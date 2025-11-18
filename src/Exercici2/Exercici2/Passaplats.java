@@ -24,11 +24,9 @@ public class Passaplats {
     }
     public synchronized Plat treurePlat() throws InterruptedException {
         while (llista.isEmpty()){
-            System.out.println("\nEl passaplats està buit! Cambrer esperant...\n");
             wait(); //El cambrer espera
         }
         Plat plat = llista.remove(0);
-        System.out.println("\nPlat: "+ plat.getNom()+ " recollit del passaplats.");
         notifyAll();//Avisa als cuiners de que hi ha espai
         return plat;
     }

@@ -18,4 +18,3 @@ public class Main2 {
         }while(!programa);
     }
 }
-

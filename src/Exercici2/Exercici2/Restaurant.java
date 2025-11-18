@@ -22,29 +22,27 @@ public class Restaurant {
         return num;
     }
     public static void iniciRestaurant(){
-        boolean ok = false;
-        do{
-            Thread cuiner1 = new Cuiner("Cuiner1",passaplats);
-            Thread cuiner2 = new Cuiner("Cuiner2",passaplats);
-            Thread cambrer1 = new Cambrer("Cambrer1",passaplats);
-            Thread cambrer2 = new Cambrer("Cambrer2",passaplats);
-            //Iniciar el passaplats
-            System.out.println("\n----- PASSAPLATS DEL RESTAURANT -----");
-            //Iniciar cuiners i cambrers
-            cuiner1.start();
-            cuiner2.start();
-            cambrer1.start();
-            cambrer2.start();
-            try{
-                cuiner1.join(); //Espera a que acabin els cuiners
-                cuiner2.join();
-                cambrer1.join(); //Detenir als cambrers
-                cambrer2.join();
-                ok = true; //Marca com a acabat
-            } catch (InterruptedException e){
-                e.printStackTrace();
-            }
-        }while (!ok);
+        
+        Thread cuiner1 = new Cuiner("Cuiner1",passaplats);
+        Thread cuiner2 = new Cuiner("Cuiner2",passaplats);
+        Thread cambrer1 = new Cambrer("Cambrer1",passaplats);
+        Thread cambrer2 = new Cambrer("Cambrer2",passaplats);
+        //Iniciar el passaplats
+        System.out.println("\n----- PASSAPLATS DEL RESTAURANT -----");
+        //Iniciar cuiners i cambrers
+        cuiner1.start();
+        cuiner2.start();
+        cambrer1.start();
+        cambrer2.start();
+        try{
+            // cuiner1.join(); //Espera a que acabin els cuiners
+            // cuiner2.join();
+            cambrer1.join(); //Detenir als cambrers
+            cambrer2.join();
+            
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
     }
     public static boolean tancarRestaurant(){
         System.out.println("\n----- FI DE SERVEI -----");

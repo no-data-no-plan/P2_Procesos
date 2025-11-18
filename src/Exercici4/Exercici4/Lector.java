@@ -1,5 +1,5 @@
 package Exercici4;
 
-public class Lector {
+public class Lector extends Thread{
     
 }
