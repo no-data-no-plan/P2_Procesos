@@ -36,19 +36,17 @@ public class Pacient implements Runnable {
         
         // El pacient intenta entrar a la sala d'espera
         salaEspera.entrarSalaEspera(this);
-        
         // El pacient espera el seu torn per ser atès
         salaEspera.esperarTorn(this);
-        
         // El pacient està sent atès pel doctor
         System.out.println("\t\t[CONSULTA] " + nomPacient + " està sent atès pel doctor...");
         
-        // Simulem el temps de consulta (més temps pels urgents)
+        // Simulem el temps de consulta,  més temps pels urgents!
         try {
             if (esUrgent) {
-                Thread.sleep(random.nextInt(200) + 300); // Entre 300-500ms per urgents
+                Thread.sleep(random.nextInt(200) + 300);
             } else {
-                Thread.sleep(random.nextInt(200) + 100); // Entre 100-300ms per normals
+                Thread.sleep(random.nextInt(200) + 100); 
             }
         } catch (InterruptedException e) {
             System.out.println(nomPacient + " ha estat interromput durant la consulta!");

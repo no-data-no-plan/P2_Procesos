@@ -22,13 +22,13 @@ public class ClientBancari implements Runnable {
         
         System.out.println(nomClient + " ha arribat al caixer automàtic!");
         
-        // Cada client fa diverses operacions bancàries
+        //Cada client fa diverses operacions bancàries
         for (int i = 0; i < numOperacions; i++) {
             
             // S'escull de manera aleatòria algun compte
             CompteBancari compteTriat = comptes[random.nextInt(comptes.length)];
             
-            // Escollim tipus d'operació aleatòriament (0: Ingressar, 1: Retirar, 2: Consultar)
+            // Escollim tipus d'operació aleatòriament 0: Ingressar, 1: Retirar, 2: Consultar
             int tipusOperacio = random.nextInt(3);
             
             System.out.println(nomClient + " intenta fer una operació al compte " + 
@@ -36,16 +36,16 @@ public class ClientBancari implements Runnable {
             
             switch (tipusOperacio) {
                 case 0:
-                    // Ingressar: quantitat aleatòria entre 50 i 500 euros
+                    // Ingressar  aleatori entre 50 i 500 euros
                     double quantitatIngressar = 50 + random.nextDouble() * 450;
-                    quantitatIngressar = Math.round(quantitatIngressar * 100.0) / 100.0; // Arrodonir a 2 decimals
+                    quantitatIngressar = Math.round(quantitatIngressar * 100.0) / 100.0;
                     compteTriat.ingressar(quantitatIngressar, nomClient);
                     break;
                     
                 case 1:
                     // Retirar: quantitat aleatòria entre 20 i 300 euros
                     double quantitatRetirar = 20 + random.nextDouble() * 280;
-                    quantitatRetirar = Math.round(quantitatRetirar * 100.0) / 100.0; // Arrodonir a 2 decimals
+                    quantitatRetirar = Math.round(quantitatRetirar * 100.0) / 100.0; 
                     compteTriat.retirar(quantitatRetirar, nomClient);
                     break;
                     
@@ -55,7 +55,7 @@ public class ClientBancari implements Runnable {
                     break;
             }
             
-            // Donem un poc de temps entre operacions per veure millor l'output
+            //Donem un poc de temps entre operacions per veure millor l'output
             try {
                 Thread.sleep(random.nextInt(100) + 50);
             } catch (InterruptedException e) {

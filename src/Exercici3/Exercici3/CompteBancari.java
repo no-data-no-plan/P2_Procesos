@@ -16,7 +16,7 @@ public class CompteBancari {
     public synchronized boolean ingressar(double quantitat, String nomClient) {
         if (quantitat <= 0) {
             System.out.println("\t\t[" + numCompte + "] INGRÉS REBUTJAT per " + nomClient + 
-                             " - Quantitat invàlida: " + quantitat + "€");
+                             " - Quantitat invàlida: " + quantitat + "EUR");
             return false;
         }
         
@@ -24,21 +24,21 @@ public class CompteBancari {
         saldo += quantitat;
         
         System.out.println("\t\t[" + numCompte + "] INGRÉS CONFIRMAT per " + nomClient + 
-                          " - Import: " + quantitat + "€ | Saldo anterior: " + saldoAnterior + 
-                          "€ | Saldo actual: " + saldo + "€");
+                          " - Import: " + quantitat + "EUR | Saldo anterior: " + saldoAnterior + 
+                          "EUR | Saldo actual: " + saldo + "EUR");
         
         return true;
     }
     
-    // Mètode sincronitzat per retirar diners del compte
+    // Metode sincronitzat per retirar diners del compte
     public synchronized boolean retirar(double quantitat, String nomClient) {
         System.out.println("\t[" + numCompte + "] " + nomClient + " vol retirar " + 
-                          quantitat + "€. Saldo disponible: " + saldo + "€");
+                          quantitat + "EUR. Saldo disponible: " + saldo + "EUR");
         
         // Comprovem que la quantitat sigui vàlida
         if (quantitat <= 0) {
             System.out.println("\t\t[" + numCompte + "] REINTEGRAMENT REBUTJAT per " + 
-                             nomClient + " - Quantitat invàlida!");
+                             nomClient + " - La quantitat no es válida!");
             return false;
         }
         
@@ -46,32 +46,32 @@ public class CompteBancari {
         if (saldo < quantitat) {
             System.out.println("\t\t[" + numCompte + "] REINTEGRAMENT REBUTJAT per " + 
                              nomClient + " - Saldo insuficient! Saldo: " + saldo + 
-                             "€, Vol retirar: " + quantitat + "€");
+                             "EUR, Vol retirar: " + quantitat + "EUR");
             return false;
         }
         
-        // Fem el reintegrament
+        // Fem la devoolució!
         double saldoAnterior = saldo;
         saldo -= quantitat;
         
         System.out.println("\t\t[" + numCompte + "] REINTEGRAMENT CONFIRMAT per " + nomClient + 
-                          " - Import: " + quantitat + "€ | Saldo anterior: " + saldoAnterior + 
-                          "€ | Saldo actual: " + saldo + "€");
+                          " - Import: " + quantitat + "EUR | Saldo anterior: " + saldoAnterior + 
+                          "EUR | Saldo actual: " + saldo + "EUR");
         
         return true;
     }
     
-    // Mètode sincronitzat per consultar el saldo (lectura consistent)
+    // Mètode sincronitzat per consultar el saldo 
     public synchronized double consultarSaldo(String nomClient) {
         System.out.println("\t[" + numCompte + "] " + nomClient + 
-                          " consulta el saldo: " + saldo + "€");
+                          " consulta el saldo: " + saldo + "EUR");
         return saldo;
     }
     
     // Mètode sincronitzat per mostrar l'estat del compte
     public synchronized void mostrarEstat() {
         System.out.println("\nCompte: " + numCompte + " - Titular: " + titular + 
-                          " | Saldo: " + saldo + "€");
+                          " | Saldo: " + saldo + "EUR");
     }
     
     public String getNumCompte() {

@@ -20,7 +20,7 @@ public class Doctor implements Runnable {
         
         System.out.println("\n" + nomDoctor + " ha arribat al consultori i comença la jornada!");
         
-        // El doctor atén pacients fins arribar al màxim
+        // El doctor atiende al pacient fins arribar al màxim
         while (pacientsAtesos < maxPacients) {
             
             System.out.println("\t[DOCTOR] " + nomDoctor + " està esperant pacients... " +
